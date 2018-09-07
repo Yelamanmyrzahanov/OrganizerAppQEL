@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QEL Организатор</string>
+    <string name="open_toggle">Открыть</string>
+    <string name="close_toggle">Закрыть</string>
+</resources>

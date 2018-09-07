@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#40a3c4</color>
+    <color name="colorPrimaryDark">#3191ae</color>
+    <color name="colorAccent">#40a3c4</color>
+    <color name="tab1">#5f6cba</color>
+    <color name="white">#ffffff</color>
+    <color name="background">#eeeeee</color>
+    <color name="info">#000000</color>
+    <color name="green">#63be87</color>
+    <color name="sec_frag_skip_btn_col">#000000</color>
+    <color name="sec_frag_name_col">#38000000</color>
+    <color name="sec_frag_phone_code_col">#87000000</color>
+    <color name="sec_frag_main_num_col">#38000000</color>
+    <color name="card_tickets_date_color">#4d4d4d</color>
+    <color name="crdview_ticket_event_color">#87000000</color>
+    <color name="black_textviews">#000000</color>
+    <color name="icons">#bfc4e3</color>
+    <color name="dark_black">#505050</color>
+    <color name="light_black_first">#808080</color>
+    <color name="light_black_second">#999999</color>
+    <color name="grey_light">#72bbbbbb</color>
+    <color name="activity_main_settings_blue_tv">#008bfd</color>
+    <color name="tab_background_selected">#bfc4e3</color>
+</resources>

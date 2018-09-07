@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/firstMenuGroup" android:checkableBehavior="none">
+        <item android:id="@+id/main" android:title="Главная" android:icon="@drawable/ic_main_black_24dp"/>
+    </group>
+
+    <group android:id="@+id/secondMenuGroup" android:checkableBehavior="single">
+        <item android:id="@+id/sales" android:title="Продажи" android:icon="@drawable/ic_move_to_inbox_black_24dp"/>
+        <item android:id="@+id/registration" android:title="Регистрация" android:icon="@drawable/ic_bookmark_grey_24dp"/>
+        <item android:id="@+id/orders" android:title="Заказы" android:icon="@drawable/ic_import_contacts_black_24dp"/>
+    </group>
+
+    <group android:id="@+id/thirdMenuGroup" android:checkableBehavior="none">
+        <item android:id="@+id/myEvents" android:title="Мои мероприятия" android:icon="@drawable/ic_star_grey_24dp"/>
+    </group>
+
+    <group android:id="@+id/fourthMenuGroup" android:checkableBehavior="single">
+        <item android:id="@+id/settings" android:title="Настройки" android:icon="@drawable/ic_settings_grey_24dp"/>
+        <item android:id="@+id/feedback" android:title="Обратная связь" android:icon="@drawable/ic_favorite_grey_24dp"/>
+        <item android:id="@+id/logout" android:title="Выйти" android:icon="@drawable/ic_exit_to_app_grey_24dp"/>
+    </group>
+
+
+
+
+
+
+</menu>
