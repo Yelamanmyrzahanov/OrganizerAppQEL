@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:id="@+id/firstMenuGroup" android:checkableBehavior="none">
+    <group android:id="@+id/firstMenuGroup" android:checkableBehavior="single">
         <item android:id="@+id/main" android:title="Главная" android:icon="@drawable/ic_main_black_24dp"/>
     </group>
 
