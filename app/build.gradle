@@ -36,4 +36,7 @@ dependencies {
     compile 'id.zelory:compressor:2.1.0'
 
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile 'com.shehabic.droppy:Droppy:0.6.0@aar'
+
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
 }

@@ -2,6 +2,7 @@ package kz.djunglestones.organizerappqel;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import java.util.List;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.mainNavView);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (savedInstanceState!=null){
+        if (savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,new CreateEventFragment(), "CreateEventFragment").commit();
             navigationView.setCheckedItem(R.id.myEvents);
         }
@@ -131,5 +133,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        CreateEventFragment createEventFragment = (CreateEventFragment) getSupportFragmentManager().findFragmentById(R.id.main_fragment_container);
+        createEventFragment.onActivityResult(requestCode,resultCode,data);
 
+    }
 }

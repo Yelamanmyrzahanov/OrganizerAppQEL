@@ -17,11 +17,13 @@ import com.amulyakhare.textdrawable.TextDrawable;
 
 import java.util.List;
 
-public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCompanyRecyclerAdapter.MyViewHolder>{
+public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCompanyRecyclerAdapter.MyViewHolder> {
 
     Context mContext;
     List<Company> companyList;
     private String company_name;
+
+    private int selectedItemPosition = -1;
 
     public ChooseCompanyRecyclerAdapter(Context mContext, List<Company> companyList) {
         this.mContext = mContext;
@@ -31,8 +33,8 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.item_view_choose_company,parent,false);
-        Intent intent = ((ChooseCompanyActivity)mContext).getIntent();
+        v = LayoutInflater.from(mContext).inflate(R.layout.item_view_choose_company, parent, false);
+        Intent intent = ((ChooseCompanyActivity) mContext).getIntent();
         company_name = intent.getStringExtra("company_name");
         MyViewHolder myViewHolder = new MyViewHolder(v);
 
@@ -42,21 +44,23 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        final Company company = companyList.get(holder.getAdapterPosition());
-        holder.company_name_tv.setText(companyList.get(position).getCompanyName());
-//        if (companyList.get(position).isChecked()){
-//            holder.checked.setVisibility(View.VISIBLE);
-//        }else{
-//            holder.checked.setVisibility(View.INVISIBLE);
+        final int itemPosition = holder.getAdapterPosition();
+
+        final Company company = companyList.get(itemPosition);
+        holder.company_name_tv.setText(company.getCompanyName());
+
+        holder.checked.setVisibility(
+                selectedItemPosition == itemPosition ? View.VISIBLE : View.INVISIBLE
+        );
+
+//        for (Company companyObject : companyList) {
+//            if (company.getCompanyName().equals(company_name)) {
+//                company.isChecked = true;
+//                holder.checked.setVisibility(View.VISIBLE);
+//            }
 //        }
 
-        for(Company companyObject:companyList){
-            if (companyList.get(position).getCompanyName().equals(company_name)){
-                companyList.get(position).isChecked = true;
-                holder.checked.setVisibility(View.VISIBLE);
-            }
-        }
-        String company_name_first_letter = Character.toString(companyList.get(position).getCompanyName().charAt(0));
+        String company_name_first_letter = Character.toString(company.getCompanyName().charAt(0));
         TextDrawable textDrawable = TextDrawable.builder().buildRound(company_name_first_letter, Color.parseColor("#eeeeee"));
 
         holder.company_image.setImageDrawable(textDrawable);
@@ -64,31 +68,31 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
         holder.main_constraint_itemview_choose_company.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String current_company = companyList.get(position).getCompanyName();
-                Toast.makeText(mContext,current_company,Toast.LENGTH_SHORT).show();
-                for(Company companyObject:companyList){
-                    if (companyObject.getCompanyName().equals(current_company)){
-                        Toast.makeText(mContext,current_company+" EQUALS"+companyObject.getCompanyName(),Toast.LENGTH_SHORT).show();
-                        companyObject.isChecked = true;
-                        holder.checked.setVisibility(View.VISIBLE);
-                    }
-                    else{
-                        Toast.makeText(mContext,current_company+" NOT EQUALS"+companyObject.getCompanyName(),Toast.LENGTH_SHORT).show();
-                        companyObject.isChecked = false;
-                        holder.checked.setVisibility(View.INVISIBLE);
-                    }
-                }
+
+                selectedItemPosition = itemPosition;
+                Toast.makeText(mContext, company.getCompanyName(), Toast.LENGTH_SHORT).show();
+                notifyDataSetChanged();
+
+//                View parentRow = (View) v.getParent();
+//                String current_company = company.getCompanyName();
+//                Toast.makeText(mContext, current_company, Toast.LENGTH_SHORT).show();
+//                if (company.isChecked) {
+//                    company.setChecked(false);
+//                    holder.checked.setVisibility(View.INVISIBLE);
+//                } else {
+//                    company.setChecked(true);
+//                    holder.checked.setVisibility(View.VISIBLE);
+//                }
             }
         });
+    }
 
+    public int getSelectedItemPosition() {
+        return selectedItemPosition;
+    }
 
-
-
-
-
-
-;
-
+    public void setSelectedItemPosition(int position) {
+        selectedItemPosition = position;
     }
 
 
@@ -100,7 +104,7 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView company_name_tv;
-        private ImageView company_image,more_options_company_cardview,checked;
+        private ImageView company_image, more_options_company_cardview, checked;
         ConstraintLayout main_constraint_itemview_choose_company;
 
         public MyViewHolder(View itemView) {
