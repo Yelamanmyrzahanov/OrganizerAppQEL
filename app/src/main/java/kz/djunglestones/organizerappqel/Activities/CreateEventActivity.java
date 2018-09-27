@@ -10,11 +10,16 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -42,11 +47,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import kz.djunglestones.organizerappqel.Fragments.CreateEventFragment;
 import kz.djunglestones.organizerappqel.Fragments.DatePickerFragment;
-import kz.djunglestones.organizerappqel.R;
+import kz.djunglestones.organizerappqel.Fragments.MyEventsFragment;
+import kz.djunglestones.organizerappqel.Fragments.StatisticsFragment;
 import kz.djunglestones.organizerappqel.Fragments.TimePickerFragment;
+import kz.djunglestones.organizerappqel.R;
 
-public class CreateEventActivity extends AppCompatActivity implements
+public class CreateEventActivity extends MainActivity implements
         DatePickerDialog.OnDateSetListener,
         TimePickerDialog.OnTimeSetListener {
     private Toolbar toolbar;
@@ -75,6 +83,10 @@ public class CreateEventActivity extends AppCompatActivity implements
     private List<String> checkedDayList;
     private TextView occurs_every_tv,day_of_the_month_tv,repeating_every_tv,choose_occur_week;
     private Button occurs_every_button,repeating_every_day_pick_btn,repeating_every_week_day_pick_btn;
+
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,10 +97,23 @@ public class CreateEventActivity extends AppCompatActivity implements
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
+
         initUI();
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+//        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_toggle, R.string.close_toggle);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+
+//        NavigationView navigationView = findViewById(R.id.createEventNavView);
+//        navigationView.setNavigationItemSelectedListener(this);
+
+//        if (savedInstanceState == null) {
+////            navigationView.setCheckedItem(R.id.myEvents);
+//        }
 
         start_date_btn_picker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -583,6 +608,7 @@ public class CreateEventActivity extends AppCompatActivity implements
     }
 
     private void initUI() {
+        drawerLayout = findViewById(R.id.activity_create_event_drawer_layout);
         toolbar = findViewById(R.id.toolbar_create_event);
         start_date_btn_picker = findViewById(R.id.start_date_btn_picker);
         start_date_time_btn_picker = findViewById(R.id.start_date_time_btn_picker);
@@ -802,11 +828,46 @@ public class CreateEventActivity extends AppCompatActivity implements
         return super.onCreateOptionsMenu(menu);
     }
 
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (toggle.onOptionsItemSelected(item)) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+            super.onBackPressed();
+            finish();
+//        }
     }
+
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.edit:
+////                Intent mainIntent = new Intent(CreateEventActivity.this,MainActivity.class);
+////                startActivity(mainIntent);
+//                drawerLayout.closeDrawers();
+//                break;
+//            case R.id.myEvents:
+//                break;
+//            case R.id.statistics:
+//                break;
+//            default:
+//                break;
+//        }
+//        drawerLayout.closeDrawer(GravityCompat.START);
+//
+//        return true;
+//    }
+
+
 
     //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
