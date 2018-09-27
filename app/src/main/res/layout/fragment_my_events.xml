@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MyEventsFragment">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/myEventsFragmentTabLayout"
+        android:background="@color/white"
+        app:tabIndicatorColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CustomTabText"
+        android:elevation="4dp">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/upcomingEventsTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Предстоящие"
+            android:background="?attr/selectableItemBackground"
+            />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/pastEventsTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Прошедшие"
+            android:background="?attr/selectableItemBackground"/>
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/draftEventsTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Черновик"
+            android:background="?attr/selectableItemBackground"/>
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="72dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_add_white_24dp"/>
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

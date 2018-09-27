@@ -4,16 +4,16 @@
     tools:showIn="navigation_view">
 
     <group android:id="@+id/firstMenuGroup" android:checkableBehavior="single">
-        <item android:id="@+id/main" android:title="Главная" android:icon="@drawable/ic_main_black_24dp"/>
+        <item android:id="@+id/statistics" android:title="Статистика" android:icon="@drawable/ic_main_black_24dp"/>
     </group>
 
     <group android:id="@+id/secondMenuGroup" android:checkableBehavior="single">
-        <item android:id="@+id/sales" android:title="Продажи" android:icon="@drawable/ic_move_to_inbox_black_24dp"/>
-        <item android:id="@+id/registration" android:title="Регистрация" android:icon="@drawable/ic_bookmark_grey_24dp"/>
+        <item android:id="@+id/edit" android:title="Редактировать" android:icon="@drawable/ic_move_to_inbox_black_24dp"/>
+        <item android:id="@+id/registration" android:title="Check-in" android:icon="@drawable/ic_bookmark_grey_24dp"/>
         <item android:id="@+id/orders" android:title="Заказы" android:icon="@drawable/ic_import_contacts_black_24dp"/>
     </group>
 
-    <group android:id="@+id/thirdMenuGroup" android:checkableBehavior="none">
+    <group android:id="@+id/thirdMenuGroup" android:checkableBehavior="single">
         <item android:id="@+id/myEvents" android:title="Мои мероприятия" android:icon="@drawable/ic_star_grey_24dp"/>
     </group>
 

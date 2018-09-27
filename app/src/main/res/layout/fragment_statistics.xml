@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.StatisticsFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/sales_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Объем продаж"
+            android:textColor="@color/black_textviews"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sales_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="63000 ₸"
+            android:textColor="@color/black_textviews"
+            android:textSize="38sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sales_title_tv" />
+
+        <TextView
+            android:id="@+id/details_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Подробно"
+            android:textColor="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sales_price_tv" />
+
+        <com.budiyev.android.circularprogressbar.CircularProgressBar
+            android:id="@+id/sold_out_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:animateProgress="true"
+            app:backgroundStrokeColor="#e0e0e0"
+            app:backgroundStrokeWidth="2dp"
+            app:drawBackgroundStroke="true"
+            app:foregroundStrokeCap="butt"
+            app:foregroundStrokeColor="@color/colorPrimary"
+            app:foregroundStrokeWidth="3dp"
+            app:indeterminate="false"
+            app:indeterminateMinimumAngle="45"
+            app:indeterminateRotationAnimationDuration="1200"
+            app:indeterminateSweepAnimationDuration="600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_tv"
+            app:maximum="100"
+            app:progress="6"
+            app:progressAnimationDuration="100"
+            app:startAngle="270" />
+
+        <TextView
+            android:id="@+id/sold_out_innerCircle_percentage_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="0dp"
+            android:text="6%"
+            app:layout_constraintBottom_toBottomOf="@+id/sold_out_progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/sold_out_progressBar"
+            app:layout_constraintStart_toStartOf="@+id/sold_out_progressBar"
+            app:layout_constraintTop_toTopOf="@+id/sold_out_progressBar" />
+
+        <TextView
+            android:id="@+id/sold_out_total_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="Продано билетов"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sold_out_progressBar"
+            app:layout_constraintStart_toEndOf="@+id/sold_out_progressBar"
+            app:layout_constraintTop_toTopOf="@+id/sold_out_progressBar" />
+
+
+        <TextView
+            android:id="@+id/sold_out_tickets_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="2/30"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sold_out_progressBar"
+            app:layout_constraintStart_toEndOf="@+id/sold_out_progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/sold_out_total_tv" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/sold_out_tickets_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/sold_out_total_tv"
+            app:layout_constraintStart_toStartOf="@+id/sold_out_innerCircle_percentage_tv"
+            app:layout_constraintTop_toBottomOf="@+id/sold_out_progressBar" />
+
+        <TextView
+            android:id="@+id/total_check_in_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Итого Check-in"
+            android:textColor="@color/black_textviews"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sold_out_tickets_recyclerView"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/total_check_in_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="15"
+            android:textColor="@color/black_textviews"
+            android:textSize="38sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/total_check_in_title_tv" />
+
+        <TextView
+            android:id="@+id/details_check_in_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Подробно"
+            android:textColor="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/total_check_in_price_tv" />
+
+        <com.budiyev.android.circularprogressbar.CircularProgressBar
+            android:id="@+id/check_in_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:animateProgress="true"
+            app:backgroundStrokeColor="#e0e0e0"
+            app:backgroundStrokeWidth="2dp"
+            app:drawBackgroundStroke="true"
+            app:foregroundStrokeCap="butt"
+            app:foregroundStrokeColor="@color/colorPrimary"
+            app:foregroundStrokeWidth="3dp"
+            app:indeterminate="false"
+            app:indeterminateMinimumAngle="45"
+            app:indeterminateRotationAnimationDuration="1200"
+            app:indeterminateSweepAnimationDuration="600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_check_in_tv"
+            app:maximum="100"
+            app:progress="6"
+            app:progressAnimationDuration="100"
+            app:startAngle="270" />
+
+        <TextView
+            android:id="@+id/check_in_innerCircle_percentage_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="0dp"
+            android:text="6%"
+            app:layout_constraintBottom_toBottomOf="@+id/check_in_progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/check_in_progressBar"
+            app:layout_constraintStart_toStartOf="@+id/check_in_progressBar"
+            app:layout_constraintTop_toTopOf="@+id/check_in_progressBar" />
+
+        <TextView
+            android:id="@+id/check_in_total_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="Продано билетов"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/check_in_progressBar"
+            app:layout_constraintStart_toEndOf="@+id/check_in_progressBar"
+            app:layout_constraintTop_toTopOf="@+id/check_in_progressBar" />
+
+        <TextView
+            android:id="@+id/check_in_tickets_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="2/30"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/check_in_progressBar"
+            app:layout_constraintStart_toEndOf="@+id/sold_out_progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/check_in_total_tv" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/check_in_tickets_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/check_in_total_tv"
+            app:layout_constraintStart_toStartOf="@+id/check_in_innerCircle_percentage_tv"
+            app:layout_constraintTop_toBottomOf="@+id/check_in_progressBar" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/save_edit"
+        android:icon="@drawable/ic_check_white_24dp"
+        android:title="Сохранить"
+        app:showAsAction="always" />
+    <item
+        android:title="Меню"
+        android:id="@+id/menu_vert"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        app:showAsAction="always">
+        <menu>
+            <item android:id="@+id/editCompany"
+                android:title="Редактировать"
+                />
+        </menu>
+    </item>
+</menu>

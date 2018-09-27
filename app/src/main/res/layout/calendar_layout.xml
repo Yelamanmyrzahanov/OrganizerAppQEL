@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_event_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardElevation="1.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/event_description_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleX="-1"
+                android:src="@drawable/ic_chat_gray_24dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_description_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:hint="Описание мероприятия"
+                android:maxLines="4"
+                android:padding="0dp"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/event_description_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_event_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:cardElevation="1.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_event_calendar_repeated">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/event_calendar_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleX="-1"
+                android:src="@drawable/ic_today_grey_24dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/start_date_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Начало"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/start_date_btn_picker"
+                app:layout_constraintEnd_toStartOf="@+id/more_options_calendar"
+                app:layout_constraintStart_toEndOf="@+id/event_calendar_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginBottom="16dp" />
+
+            <Button
+                android:id="@+id/start_date_btn_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/calendar_btn_background"
+                android:fontFamily="@font/roboto"
+                android:padding="12dp"
+                android:text="Пт, 31 авг, 2018"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="@+id/start_date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/start_date_tv" />
+
+            <Button
+                android:id="@+id/start_date_time_btn_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/calendar_btn_background"
+                android:fontFamily="@font/roboto"
+                android:padding="12dp"
+                android:text="19:00"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/start_date_btn_picker"
+                app:layout_constraintTop_toTopOf="@+id/start_date_btn_picker" />
+
+            <ImageView
+                android:id="@+id/more_options_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_more_vert_grey_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/end_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Конец"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/end_date_button_picker"
+                app:layout_constraintStart_toStartOf="@+id/start_date_btn_picker"
+                app:layout_constraintTop_toBottomOf="@+id/start_date_btn_picker"
+                app:layout_goneMarginBottom="16dp" />
+
+            <Button
+                android:id="@+id/end_date_button_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/calendar_btn_background"
+                android:fontFamily="@font/roboto"
+                android:padding="12dp"
+                android:text="Пт, 31 авг, 2018"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/end_date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/end_date_tv" />
+
+            <Button
+                android:id="@+id/end_date_time_button_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/calendar_btn_background"
+                android:fontFamily="@font/roboto"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="12dp"
+                android:text="19:00"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/end_date_button_picker"
+                app:layout_constraintTop_toTopOf="@+id/end_date_button_picker" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_event_calendar_repeated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardElevation="1.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardview_event_description">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/event_calendar_icon_repeated"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleX="-1"
+                android:src="@drawable/ic_today_grey_24dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/repeated_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Повторяющееся мероприятие"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/more_options_calendar_repeated"
+                app:layout_constraintStart_toEndOf="@+id/event_calendar_icon_repeated"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginBottom="16dp" />
+
+            <ImageView
+                android:id="@+id/more_options_calendar_repeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_more_vert_grey_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/how_often_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Как часто проходит?"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/repeated_tv"
+                app:layout_constraintStart_toStartOf="@id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@+id/repeated_tv" />
+
+            <Button
+                android:id="@+id/how_often_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/often_event_button_background"
+                android:fontFamily="@font/roboto"
+                android:gravity="center|start"
+                android:paddingLeft="12dp"
+                android:text="Еженедельно"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/how_often_tv"
+                app:layout_constraintStart_toStartOf="@id/how_often_tv"
+                app:layout_constraintTop_toBottomOf="@id/how_often_tv" />
+
+            <TextView
+                android:id="@+id/choose_week_day_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="В какой день (дни) недели?"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/repeated_tv"
+                app:layout_constraintStart_toStartOf="@+id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@id/how_often_btn" />
+
+            <Button
+                android:id="@+id/choose_week_day_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/often_event_button_background"
+                android:fontFamily="@font/roboto"
+                android:gravity="center|start"
+                android:paddingLeft="12dp"
+                android:text="Выбрать..."
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/repeated_tv"
+                app:layout_constraintStart_toStartOf="@+id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@id/choose_week_day_tv" />
+
+            <TextView
+                android:id="@+id/start_date_tv_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="C"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@id/choose_week_day_btn" />
+
+            <Button
+                android:id="@+id/repeated_start_time_picker_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto"
+                android:text="19:00"
+                android:background="@drawable/often_event_button_background"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toStartOf="@+id/repeated_end_time_picker_btn"
+                app:layout_constraintStart_toStartOf="@+id/start_date_tv_c"
+                app:layout_constraintTop_toBottomOf="@+id/start_date_tv_c"/>
+
+            <Button
+                android:id="@+id/repeated_end_time_picker_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/often_event_button_background"
+                android:fontFamily="@font/roboto"
+                android:text="19:00"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/choose_week_day_btn"
+                app:layout_constraintStart_toEndOf="@+id/repeated_start_time_picker_btn"
+                app:layout_constraintTop_toTopOf="@+id/repeated_start_time_picker_btn" />
+
+            <TextView
+                android:id="@+id/start_date_tv_do"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="До"
+                app:layout_constraintStart_toStartOf="@+id/repeated_end_time_picker_btn"
+                app:layout_constraintTop_toBottomOf="@+id/choose_week_day_btn" />
+
+            <TextView
+                android:id="@+id/start_date_tv_repeated_dayly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Начало"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/start_date_btn_picker_repeated"
+                app:layout_constraintStart_toStartOf="@+id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@+id/repeated_start_time_picker_btn" />
+
+            <Button
+                android:id="@+id/start_date_btn_picker_repeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/often_event_button_background"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Пт, 31 авг, 2018"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/repeated_tv"
+                app:layout_constraintTop_toBottomOf="@+id/start_date_tv_repeated_dayly" />
+
+            <Button
+                android:id="@+id/end_date_button_picker_repeated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/often_event_button_background"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Пт, 31 авг, 2018"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toEndOf="@+id/start_date_btn_picker_repeated"
+                app:layout_constraintTop_toBottomOf="@+id/start_date_tv_repeated_dayly" />
+
+            <TextView
+                android:id="@+id/end_date_tv_repeated_dayly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="Конец"
+                android:textColor="#9e9e9e"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/end_date_button_picker_repeated"
+                app:layout_constraintStart_toStartOf="@+id/end_date_button_picker_repeated"
+                app:layout_constraintTop_toTopOf="@+id/start_date_tv_repeated_dayly" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

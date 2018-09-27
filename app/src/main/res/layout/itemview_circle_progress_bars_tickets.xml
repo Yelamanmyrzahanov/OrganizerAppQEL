@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.budiyev.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/circle_progressBar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        app:animateProgress="true"
+        app:backgroundStrokeColor="#e0e0e0"
+        app:backgroundStrokeWidth="1dp"
+        app:drawBackgroundStroke="true"
+        app:foregroundStrokeCap="butt"
+        app:foregroundStrokeColor="@color/colorPrimary"
+        app:foregroundStrokeWidth="2dp"
+        app:indeterminate="false"
+        app:indeterminateMinimumAngle="45"
+        app:indeterminateRotationAnimationDuration="1200"
+        app:indeterminateSweepAnimationDuration="600"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maximum="100"
+        app:progress="10"
+        app:progressAnimationDuration="100"
+        app:startAngle="270" />
+
+    <TextView
+        android:id="@+id/ticket_type_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="Стандарт"
+        android:textColor="@color/black_textviews"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_progressBar"
+        app:layout_constraintTop_toTopOf="@+id/circle_progressBar" />
+
+    <TextView
+        android:id="@+id/sold_out_tickets_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:text="2/30"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_type_tv" />
+
+    <TextView
+        android:id="@+id/percentage_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5%"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/circle_progressBar"
+        app:layout_constraintStart_toStartOf="@+id/circle_progressBar"
+        app:layout_constraintTop_toTopOf="@+id/circle_progressBar" />
+
+
+</android.support.constraint.ConstraintLayout>

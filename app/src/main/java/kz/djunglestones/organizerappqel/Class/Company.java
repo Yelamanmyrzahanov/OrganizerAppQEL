@@ -1,8 +1,8 @@
-package kz.djunglestones.organizerappqel;
+package kz.djunglestones.organizerappqel.Class;
 
 public class Company {
-    String companyName;
-    boolean isChecked;
+    public String companyName;
+    public boolean isChecked;
 
     public Company(String companyName) {
         this.companyName = companyName;

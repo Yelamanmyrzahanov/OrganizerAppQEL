@@ -9,11 +9,128 @@
     <string name="typeOfEventCalendar">Вид мероприятия</string>
     <string name="placeOfEvent">Место</string>
     <string name="ticketsOfEvent">Билеты</string>
+    <string name="locationOfEvent">Место встречи</string>
+    <string name="cityOfEvent">Выберите город</string>
+    <string name="themeOfEvent">Выбрать тему</string>
+    <string name="howOftenEvent">Как часто проходит?</string>
+    <string name="dayOfWeek">В какой день(дни) недели</string>
+    <string name="ok">Выбрать</string>
+    <string-array name="dayOfWeekArr">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
+    <string-array name="howOftenEventArr">
+        <item>Ежедневно</item>
+        <item>Еженедельно</item>
+        <item>Ежемесячно</item>
+    </string-array>
+    <string-array name="themeOfEventArr">
+        <item>Музыка</item>
+        <item>Бизнес</item>
+        <item>Активный отдых</item>
+        <item>Еда и Напитки</item>
+        <item>Образование</item>
+        <item>Спорт и Фитнес</item>
+        <item>Развлечение</item>
+        <item>Искусство</item>
+        <item>Здоровье и Красота</item>
+        <item>Обучение</item>
+        <item>Юмор</item>
+        <item>Путешествие и Туры</item>
+        <item>Семья</item>
+        <item>Религия</item>
+        <item>Благотворительность</item>
+        <item>Мода и Стиль</item>
+        <item>Наука и Техника</item>
+        <item>Кино и Медиа</item>
+        <item>Сообщество</item>
+        <item>Правительство</item>
+    </string-array>
+    <string-array name="cityOfEventArr">
+        <item>Актау</item>
+        <item>Актобе</item>
+        <item>Алматы</item>
+        <item>Астана</item>
+        <item>Атырау</item>
+        <item>Жанаозен</item>
+        <item>Караганда</item>
+        <item>Кокшетау</item>
+        <item>Костанай</item>
+        <item>Кызылорда</item>
+        <item>Павлодар</item>
+        <item>Петропавловск</item>
+        <item>Рудный</item>
+        <item>Семей</item>
+        <item>Талдыкорган</item>
+        <item>Тараз</item>
+        <item>Темиртау</item>
+        <item>Туркестан</item>
+        <item>Уральск</item>
+        <item>Усть-каменогорск</item>
+        <item>Шымкент</item>
+        <item>Экибастуз</item>
+    </string-array>
+    <string-array name="locationOfEventArr">
+        <item>Место</item>
+        <item>Онлайн-мероприятие</item>
+    </string-array>
+    <string name="privacyOfEvent">Приватность</string>
+    <string name="occursEveryMonthDay">Выберите число</string>
+    <string-array name="occursEveryMonthDayArr">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string name="repeatingEveryDay"></string>
+    <string-array name="repeatingEveryDayArr">
+        <item>Первый</item>
+        <item>Второй</item>
+        <item>Третий</item>
+        <item>Четвертый</item>
+    </string-array>
+    <string-array name="privacyOfEventArr">
+        <item>Публичное</item>
+        <item>Частное</item>
+    </string-array>
     <string-array name="location_spinner_arr">
         <item>Место</item>
         <item>Онлайн-мероприятие</item>
     </string-array>
     <string-array name="typeOfEventCalendarArr">
+        <item>Единоразовое мероприятие</item>
         <item>Повторяющееся мероприятие</item>
     </string-array>
     <string-array name="placeOfEventArr">

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activities.EditCompanyActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_edit_company"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/circularImageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grey_circle_image"
+            app:civ_background_color="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_edit_company" />
+
+        <ImageView
+            android:id="@+id/camera_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/circularImageView"
+            app:layout_constraintEnd_toEndOf="@+id/circularImageView"
+            app:layout_constraintStart_toStartOf="@+id/circularImageView"
+            app:layout_constraintTop_toTopOf="@+id/circularImageView" />
+
+        <EditText
+            android:id="@+id/company_name_edittext_edit"
+            style="@style/MyEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Название Компании"
+            android:inputType="text"
+            android:text="MSLM company"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/circularImageView" />
+
+        <EditText
+            android:id="@+id/company_mail_edittext_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/MyEditTextTheme"
+            android:hint="Название Компании"
+            android:inputType="textEmailAddress"
+            android:text="MSLM company"
+            app:layout_constraintEnd_toEndOf="@id/company_name_edittext_edit"
+            app:layout_constraintStart_toStartOf="@id/company_name_edittext_edit"
+            app:layout_constraintTop_toBottomOf="@id/company_name_edittext_edit" />
+
+
+        <EditText
+            android:id="@+id/company_number_edittext_edit"
+            style="@style/MyEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Название Компании"
+            android:inputType="number"
+            android:text="+7 707 353 94 83"
+            app:layout_constraintEnd_toEndOf="@id/company_mail_edittext_edit"
+            app:layout_constraintStart_toStartOf="@id/company_mail_edittext_edit"
+            app:layout_constraintTop_toBottomOf="@id/company_mail_edittext_edit"
+            tools:ignore="TextFields"/>
+
+        <Switch
+            android:id="@+id/show_number_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="@+id/company_number_edittext_edit"
+            app:layout_constraintEnd_toEndOf="@+id/company_number_edittext_edit"
+            app:layout_constraintTop_toTopOf="@+id/company_number_edittext_edit" />
+
+        <ImageView
+            android:id="@+id/links_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_insert_link_grey_24dp"
+            app:layout_constraintTop_toBottomOf="@id/company_number_edittext_edit"
+            app:layout_constraintStart_toStartOf="@id/company_number_edittext_edit"/>
+
+        <EditText
+            android:id="@+id/link_main_site_edittext"
+            style="@style/MyEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Сайт компании"
+            android:inputType="textWebEmailAddress"
+            android:text="www.qel.mobi"
+            app:layout_constraintEnd_toEndOf="@id/company_number_edittext_edit"
+            app:layout_constraintStart_toEndOf="@id/links_image"
+            app:layout_constraintTop_toBottomOf="@+id/company_number_edittext_edit" />
+
+        <EditText
+            android:id="@+id/link_instagram_edittext"
+            style="@style/MyEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Сайт компании"
+            android:inputType="textWebEmailAddress"
+            android:text="www.instagram.com/"
+            app:layout_constraintEnd_toEndOf="@id/company_number_edittext_edit"
+            app:layout_constraintStart_toStartOf="@+id/link_main_site_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/link_main_site_edittext" />
+
+        <EditText
+            android:id="@+id/link_facebook_edittext"
+            style="@style/MyEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Сайт компании"
+            android:inputType="textWebEmailAddress"
+            android:text="www.facebook.com/"
+            app:layout_constraintEnd_toEndOf="@+id/link_main_site_edittext"
+            app:layout_constraintStart_toStartOf="@+id/link_main_site_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/link_instagram_edittext" />
+
+
+        <EditText
+            android:id="@+id/link_vk_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Сайт компании"
+            android:inputType="textWebEmailAddress"
+            android:text="www.vk.com/"
+            style="@style/MyEditTextTheme"
+            app:layout_constraintTop_toBottomOf="@id/link_facebook_edittext"
+            app:layout_constraintStart_toStartOf="@id/link_facebook_edittext"
+            app:layout_constraintEnd_toEndOf="@id/link_facebook_edittext"
+            />
+
+
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
