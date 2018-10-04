@@ -1,7 +1,10 @@
 package kz.djunglestones.organizerappqel.Activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,9 +13,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import kz.djunglestones.organizerappqel.Fragments.CheckInFragment;
 import kz.djunglestones.organizerappqel.Fragments.CreateEventFragment;
+import kz.djunglestones.organizerappqel.Fragments.EditCompanyFragment;
 import kz.djunglestones.organizerappqel.Fragments.MyEventsFragment;
+import kz.djunglestones.organizerappqel.Fragments.OrdersFragment;
 import kz.djunglestones.organizerappqel.Fragments.StatisticsFragment;
 import kz.djunglestones.organizerappqel.MyInterface;
 import kz.djunglestones.organizerappqel.R;
@@ -29,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements
     private MyInterface myInterface;
 
     private Toolbar toolbar;
+    private boolean isDrawerOpen = false;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +47,61 @@ public class MainActivity extends AppCompatActivity implements
 
         initUI();
 
+
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_toggle, R.string.close_toggle);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_toggle, R.string.close_toggle){
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                if(slideOffset > .55 && !isDrawerOpen){
+                    onDrawerOpened(drawerView);
+                    isDrawerOpen = true;
+                } else if(slideOffset < .45 && isDrawerOpen) {
+                    onDrawerClosed(drawerView);
+                    isDrawerOpen = false;
+                }
+            }
+        };
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = findViewById(R.id.mainNavView);
+        navigationView = findViewById(R.id.mainNavView);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new MyEventsFragment(), "CreateEventFragment").commit();
-            navigationView.setCheckedItem(R.id.myEvents);
+            Object objectFrag = new MyEventsFragment();
+            Object fragId = R.id.myEvents;
+            if (!(getIntent().getExtras() == null)){
+                String frag_name =  getIntent().getStringExtra("fragment_name");
+                switch (frag_name){
+//                    case "EditFragment":
+//                        objectFrag = new CreateEventFragment();
+//                        fragId = R.id.edit;
+//                        break;
+                    case "OrdersFragment":
+                        objectFrag = new OrdersFragment();
+                        fragId = R.id.orders;
+                        break;
+                    case "StatisticsFragment":
+                        objectFrag = new StatisticsFragment();
+                        fragId = R.id.statistics;
+                        break;
+                    case "MyEventsFragment":
+                        objectFrag = new MyEventsFragment();
+                        fragId = R.id.myEvents;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) objectFrag, "CreateEventFragment").commit();
+            navigationView.setCheckedItem((Integer) fragId);
         }
+
+
 
 
     }
@@ -78,24 +131,42 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        Object objectFrag = new MyEventsFragment();
+        Object fragId = R.id.myEvents;
         switch (item.getItemId()) {
-            case R.id.edit:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new CreateEventFragment()).commit();
-                break;
+
+//            case R.id.edit:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new CreateEventFragment()).commit();
+//                break;
 //            case R.id.edit:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,new EditCompanyFragment()).commit();
 //                break;
+            case R.id.check_in:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                objectFrag = new CheckInFragment();
+                fragId = R.id.check_in;
+                break;
+            case R.id.orders:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                objectFrag = new OrdersFragment();
+                fragId = R.id.orders;
+                break;
             case R.id.myEvents:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new MyEventsFragment()).commit();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                objectFrag = new MyEventsFragment();
+                fragId = R.id.myEvents;
                 break;
             case R.id.statistics:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new StatisticsFragment()).commit();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                objectFrag = new StatisticsFragment();
+                fragId = R.id.statistics;
                 break;
             default:
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) objectFrag, "CreateEventFragment").commit();
+        navigationView.setCheckedItem((Integer) fragId);
 
         return true;
     }
@@ -142,4 +213,5 @@ public class MainActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 }

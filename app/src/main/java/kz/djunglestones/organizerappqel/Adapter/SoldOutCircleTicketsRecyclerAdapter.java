@@ -12,7 +12,7 @@ import com.budiyev.android.circularprogressbar.CircularProgressBar;
 
 import java.util.List;
 
-import kz.djunglestones.organizerappqel.Class.SoldOutCircleTickets;
+import kz.djunglestones.organizerappqel.Models.SoldOutCircleTickets;
 import kz.djunglestones.organizerappqel.R;
 
 public class SoldOutCircleTicketsRecyclerAdapter extends RecyclerView.Adapter<SoldOutCircleTicketsRecyclerAdapter.MyViewHolder> {
@@ -36,14 +36,13 @@ public class SoldOutCircleTicketsRecyclerAdapter extends RecyclerView.Adapter<So
         int soldOut = soldOutCircleTicketsList.get(position).getTicketsSold();
         int total = soldOutCircleTicketsList.get(position).getTicketTotal();
         holder.ticket_type_tv.setText(soldOutCircleTicketsList.get(position).getTicketType());
-        holder.sold_out_tickets_amount.setText(soldOutCircleTicketsList.get(position).getTicketsSold()+"/"+soldOutCircleTicketsList.get(position).getTicketTotal());
+        holder.sold_out_tickets_amount.setText(soldOutCircleTicketsList.get(position).getTicketsSold()+" / "+soldOutCircleTicketsList.get(position).getTicketTotal());
         holder.circularProgressBar.setProgress(percentageCount(soldOut,total));
-        holder.percentage_tv.setText(percentageCount(soldOut,total)+" %");
+        holder.percentage_tv.setText(percentageCount(soldOut,total)+"%");
     }
 
-    private float percentageCount(int soldOut, int total) {
-        float percent = (soldOut*100)/total;
-        return percent;
+    private int percentageCount(int soldOut, int total) {
+        return Math.round((float) soldOut *100/ (float) total);
     }
 
     @Override

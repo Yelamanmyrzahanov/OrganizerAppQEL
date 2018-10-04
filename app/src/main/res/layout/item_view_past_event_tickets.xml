@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.budiyev.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/circle_progressBar_past_events"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:animateProgress="true"
+        app:backgroundStrokeWidth="4dp"
+        app:drawBackgroundStroke="true"
+        app:backgroundStrokeColor="#e0e0e0"
+        app:foregroundStrokeCap="butt"
+        app:foregroundStrokeColor="@color/green"
+        app:foregroundStrokeWidth="4dp"
+        app:indeterminate="false"
+        app:indeterminateMinimumAngle="45"
+        app:progress="8"
+        app:maximum="100"
+        app:progressAnimationDuration="100"
+        app:startAngle="270"
+        app:indeterminateRotationAnimationDuration="1200"
+        app:indeterminateSweepAnimationDuration="600"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/event_name_past_events"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Сольный концерт Кайрата Нуртаса"
+        android:textColor="#212121"
+        app:layout_constraintStart_toEndOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/event_date_past_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto"
+        android:text="вс, мая 1 2018, 19:00"
+        android:textColor="#212121"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintTop_toBottomOf="@+id/event_name_past_events" />
+
+    <TextView
+        android:id="@+id/tickets_sold_past_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="0 / 456"
+        android:textColor="#212121"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintTop_toBottomOf="@+id/event_date_past_events" />
+
+    <TextView
+        android:id="@+id/money_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/roboto"
+        android:text="$0"
+        android:textColor="#212121"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tickets_sold_past_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tickets_sold_past_events" />
+
+    <TextView
+        android:id="@+id/percentage_tv_center_cirlce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintEnd_toEndOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintStart_toStartOf="@+id/circle_progressBar_past_events"
+        app:layout_constraintTop_toTopOf="@+id/circle_progressBar_past_events" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

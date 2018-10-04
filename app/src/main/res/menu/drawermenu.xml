@@ -9,7 +9,7 @@
 
     <group android:id="@+id/secondMenuGroup" android:checkableBehavior="single">
         <item android:id="@+id/edit" android:title="Редактировать" android:icon="@drawable/ic_move_to_inbox_black_24dp"/>
-        <item android:id="@+id/registration" android:title="Check-in" android:icon="@drawable/ic_bookmark_grey_24dp"/>
+        <item android:id="@+id/check_in" android:title="Check-in" android:icon="@drawable/ic_bookmark_grey_24dp"/>
         <item android:id="@+id/orders" android:title="Заказы" android:icon="@drawable/ic_import_contacts_black_24dp"/>
     </group>
 

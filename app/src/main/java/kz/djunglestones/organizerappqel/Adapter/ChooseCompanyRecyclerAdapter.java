@@ -1,28 +1,27 @@
 package kz.djunglestones.organizerappqel.Adapter;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.shehabic.droppy.DroppyClickCallbackInterface;
-import com.shehabic.droppy.DroppyMenuItem;
-import com.shehabic.droppy.DroppyMenuPopup;
 
 import java.util.List;
 
+import kz.djunglestones.organizerappqel.Activities.ChooseCompanyActivity;
 import kz.djunglestones.organizerappqel.Activities.EditCompanyActivity;
-import kz.djunglestones.organizerappqel.Class.Company;
+import kz.djunglestones.organizerappqel.Models.Company;
 import kz.djunglestones.organizerappqel.R;
 
 public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCompanyRecyclerAdapter.MyViewHolder> {
@@ -33,6 +32,8 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
 
     private int selectedItemPosition = -1;
     private Context context;
+    private String company_name;
+    private boolean selectedFromIntent = true;
 
     public ChooseCompanyRecyclerAdapter(Context context,List<Company> companyList, OnItemClickListener onItemClickListener) {
         this.companyList = companyList;
@@ -45,6 +46,8 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_choose_company, parent, false);
+        Intent intent = ((ChooseCompanyActivity)context).getIntent();
+        company_name = intent.getStringExtra("company_name");
         return new MyViewHolder(v);
     }
 
@@ -54,10 +57,22 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
 
         final Company company = companyList.get(itemPosition);
         holder.company_name_tv.setText(company.getCompanyName());
+        while (selectedFromIntent){
+            for(int i=0;i<companyList.size();i++){
+                if (companyList.get(i).getCompanyName().equals(company_name)){
+                    companyList.get(i).isChecked = true;
+                    selectedItemPosition = i;
+                    selectedFromIntent = false;
+                }
+            }
+        }
+
+
 
         holder.checked.setVisibility(
                 selectedItemPosition == itemPosition ? View.VISIBLE : View.INVISIBLE
         );
+
 
         String company_name_first_letter = Character.toString(company.getCompanyName().charAt(0));
         TextDrawable textDrawable = TextDrawable.builder().buildRound(company_name_first_letter, Color.parseColor("#eeeeee"));
@@ -72,6 +87,8 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
                 selectedItemPosition = itemPosition;
                 onItemClickListener.onClick(company, itemPosition);
                 notifyDataSetChanged();
+                ((Activity) context).onBackPressed();
+                ((Activity) context).finish();
 
 //                View parentRow = (View) v.getParent();
 //                String current_company = company.getCompanyName();
@@ -86,24 +103,34 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
             }
         });
 
-
         holder.more_options_company_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DroppyMenuPopup.Builder droppyBuilderCalendar = new DroppyMenuPopup.Builder(context,holder.more_options_company_cardview);
-                droppyBuilderCalendar.addMenuItem(new DroppyMenuItem("Редактировать")).addSeparator();
-//
-                droppyBuilderCalendar.setOnClick(new DroppyClickCallbackInterface() {
-                    @Override
-                    public void call(View v, int id) {
-                        if (id==0){
-                            Intent intent = new Intent(context,EditCompanyActivity.class);
-                            context.startActivity(intent);
-                        }
-                    }
-                });
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Компания")
+                        .setItems(R.array.editCompanyArr, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(context,EditCompanyActivity.class);
+                                context.startActivity(intent);
+                            }
+                        });
+
+                builder.create();
+                builder.show();
+//                DroppyMenuPopup.Builder droppyBuilderCalendar = new DroppyMenuPopup.Builder(context,holder.more_options_company_cardview);
+//                droppyBuilderCalendar.addMenuItem(new DroppyMenuItem("Редактировать")).addSeparator();
 ////
-                droppyBuilderCalendar.build().show();
+//                droppyBuilderCalendar.setOnClick(new DroppyClickCallbackInterface() {
+//                    @Override
+//                    public void call(View v, int id) {
+//                        if (id==0){
+//                            Intent intent = new Intent(context,EditCompanyActivity.class);
+//                            context.startActivity(intent);
+//                        }
+//                    }
+//                });
+//////
+//                droppyBuilderCalendar.build().show();
             }
         });
     }
@@ -124,7 +151,7 @@ public class ChooseCompanyRecyclerAdapter extends RecyclerView.Adapter<ChooseCom
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView company_name_tv,percentage_tv;
+        private TextView company_name_tv;
         private ImageView company_image, more_options_company_cardview, checked;
         ConstraintLayout main_constraint_itemview_choose_company;
 

@@ -1,4 +1,4 @@
-package kz.djunglestones.organizerappqel.Class;
+package kz.djunglestones.organizerappqel.Models;
 
 public class Company {
     public String companyName;

@@ -44,17 +44,17 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-import kz.djunglestones.organizerappqel.Fragments.CreateEventFragment;
 import kz.djunglestones.organizerappqel.Fragments.DatePickerFragment;
-import kz.djunglestones.organizerappqel.Fragments.MyEventsFragment;
-import kz.djunglestones.organizerappqel.Fragments.StatisticsFragment;
 import kz.djunglestones.organizerappqel.Fragments.TimePickerFragment;
 import kz.djunglestones.organizerappqel.R;
 
-public class CreateEventActivity extends MainActivity implements
+public class CreateEventActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
         DatePickerDialog.OnDateSetListener,
         TimePickerDialog.OnTimeSetListener {
     private Toolbar toolbar;
@@ -80,12 +80,15 @@ public class CreateEventActivity extends MainActivity implements
     private Button choose_week_day_btn;
     private Button repeated_start_time_picker_btn,repeated_end_time_picker_btn;
     private Button start_date_btn_picker_repeated,end_date_button_picker_repeated;
-    private List<String> checkedDayList;
+    private List<String> checkedDayList = new ArrayList<>();
+    private List<String> checkedMonthDayList = new ArrayList<>();
     private TextView occurs_every_tv,day_of_the_month_tv,repeating_every_tv,choose_occur_week;
     private Button occurs_every_button,repeating_every_day_pick_btn,repeating_every_week_day_pick_btn;
-
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    private boolean[] weekItemsChecked = {false,false,false,false,false,false,false};
+    private boolean[] monthDaysItemsChecked = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,17 +106,18 @@ public class CreateEventActivity extends MainActivity implements
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_toggle, R.string.close_toggle);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_toggle, R.string.close_toggle);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-//        NavigationView navigationView = findViewById(R.id.createEventNavView);
-//        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = findViewById(R.id.createEventNavView);
+        navigationView.setNavigationItemSelectedListener(this);
 
-//        if (savedInstanceState == null) {
-////            navigationView.setCheckedItem(R.id.myEvents);
-//        }
+        if (savedInstanceState == null) {
+//            navigationView.setCheckedItem(R.id.myEvents);
+        }
 
         start_date_btn_picker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,14 +322,16 @@ public class CreateEventActivity extends MainActivity implements
         add_event_tickets_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CreateEventActivity.this, "New activity should be opened", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CreateEventActivity.this,CreateTicketsActivity.class);
+                startActivity(intent);
             }
         });
         ImageView imageView4 = findViewById(R.id.imageView4);
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CreateEventActivity.this, "Arrow down clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CreateEventActivity.this,CreateTicketsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -433,36 +439,37 @@ public class CreateEventActivity extends MainActivity implements
             }
         });
 
+
         choose_week_day_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkedDayList = new ArrayList<>();
                 final String[] dayOfWeekArr = CreateEventActivity.this.getResources().getStringArray(R.array.dayOfWeekArr);
                 final AlertDialog.Builder builder = new AlertDialog.Builder(CreateEventActivity.this);
                 builder.setTitle(R.string.dayOfWeek)
-                        .setMultiChoiceItems(R.array.dayOfWeekArr, null, new DialogInterface.OnMultiChoiceClickListener() {
+                        .setMultiChoiceItems(R.array.dayOfWeekArr, weekItemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                                 if (isChecked) {
                                     // If the user checked the item, add it to the selected items
                                     checkedDayList.add(dayOfWeekArr[which]);
-                                } else if (checkedDayList.contains(which)) {
+                                    weekItemsChecked[which] = true;
+                                } else if (checkedDayList.contains(dayOfWeekArr[which])) {
                                     // Else, if the item is already in the array, remove it
-                                    checkedDayList.remove(Integer.valueOf(which));
+                                    checkedDayList.remove(dayOfWeekArr[which]);
+                                    weekItemsChecked[which] = false;
                                 }
                             }
                         })
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.d("Days", "onClick: "+checkedDayList);
                                 int counter = 0;
                                 StringBuilder daysSelected = new StringBuilder();
                                 if (checkedDayList.size()>2){
                                     for (int i=0;i<checkedDayList.size();i++){
                                         counter+=1;
                                     }
-                                    choose_week_day_btn.setText(String.valueOf(counter)+" из "+" 7 дней");
+                                    choose_week_day_btn.setText(String.valueOf(counter)+" из "+"7 дней");
                                 }else{
                                     for (int i=0;i<checkedDayList.size();i++){
                                         if (i>=1){
@@ -486,17 +493,52 @@ public class CreateEventActivity extends MainActivity implements
             }
         });
 
+
+
         occurs_every_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String[] dayOfMonth = CreateEventActivity.this.getResources().getStringArray(R.array.occursEveryMonthDayArr);
                 AlertDialog.Builder builder = new AlertDialog.Builder(CreateEventActivity.this);
                 builder.setTitle(R.string.occursEveryMonthDay)
-                        .setItems(R.array.occursEveryMonthDayArr, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                occurs_every_button.setText(dayOfMonth[which]+"-e");
+                        .setMultiChoiceItems(R.array.occursEveryMonthDayArr, monthDaysItemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                        if (isChecked){
+                            checkedMonthDayList.add(dayOfMonth[which]);
+                            monthDaysItemsChecked[which] = true;
+                        }else if (checkedDayList.contains(dayOfMonth[which])){
+                            checkedMonthDayList.remove(dayOfMonth[which]);
+                            monthDaysItemsChecked[which] = false;
+                        }
+                    }
+                }).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int counter = 0;
+                        StringBuilder daysSelected = new StringBuilder();
+                        for (int i=0;i<checkedMonthDayList.size();i++){
+                            if (i>=1){
+                                daysSelected.append(", ");
                             }
-                        });
+                            Collections.sort(checkedMonthDayList);
+                            daysSelected.append(checkedMonthDayList.get(i));
+
+                        }
+                        occurs_every_button.setText(daysSelected);
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton(R.string.close_toggle, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+//                        .setItems(R.array.occursEveryMonthDayArr, new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                occurs_every_button.setText(dayOfMonth[which]);
+//                            }
+//                        });
                 builder.create();
                 builder.show();
             }
@@ -606,6 +648,7 @@ public class CreateEventActivity extends MainActivity implements
         });
 
     }
+
 
     private void initUI() {
         drawerLayout = findViewById(R.id.activity_create_event_drawer_layout);
@@ -829,53 +872,59 @@ public class CreateEventActivity extends MainActivity implements
     }
 
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (toggle.onOptionsItemSelected(item)) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onBackPressed() {
-//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
             super.onBackPressed();
             finish();
-//        }
+        }
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.edit:
-////                Intent mainIntent = new Intent(CreateEventActivity.this,MainActivity.class);
-////                startActivity(mainIntent);
-//                drawerLayout.closeDrawers();
-//                break;
-//            case R.id.myEvents:
-//                break;
-//            case R.id.statistics:
-//                break;
-//            default:
-//                break;
-//        }
-//        drawerLayout.closeDrawer(GravityCompat.START);
-//
-//        return true;
-//    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.edit:
+                Intent mainIntent = new Intent(CreateEventActivity.this,MainActivity.class);
+                mainIntent.putExtra("fragment_name","EditFragment");
+                startActivity(mainIntent);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.myEvents:
+                Intent eventsIntent = new Intent(CreateEventActivity.this,MainActivity.class);
+                eventsIntent.putExtra("fragment_name","MyEventsFragment");
+                startActivity(eventsIntent);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.statistics:
+                Intent statsIntent = new Intent(CreateEventActivity.this,MainActivity.class);
+                statsIntent.putExtra("fragment_name","StatisticsFragment");
+                startActivity(statsIntent);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.orders:
+                Intent ordersIntent = new Intent(CreateEventActivity.this,MainActivity.class);
+                ordersIntent.putExtra("fragment_name","OrdersFragment");
+                startActivity(ordersIntent);
+                drawerLayout.closeDrawers();
+                break;
+            default:
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
 
-
-
-    //    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == android.R.id.home) {
-//            finish();
-//            return true;
-//        }
-
-//        return super.onOptionsItemSelected(item);
-//    }
+        return true;
+    }
 }

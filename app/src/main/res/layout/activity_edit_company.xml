@@ -29,8 +29,7 @@
             android:layout_height="96dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/grey_circle_image"
-            app:civ_background_color="@color/green"
+            android:src="@drawable/circle_96px"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_edit_company" />
@@ -61,22 +60,24 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Название Компании"
+            android:hint="Название компании"
             android:inputType="text"
             android:text="MSLM company"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/circularImageView" />
 
         <EditText
             android:id="@+id/company_mail_edittext_edit"
+            style="@style/MyEditTextTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            style="@style/MyEditTextTheme"
-            android:hint="Название Компании"
+            android:hint="Email"
             android:inputType="textEmailAddress"
-            android:text="MSLM company"
+            android:text="nariman.duisekov@gmail.com"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@id/company_name_edittext_edit"
             app:layout_constraintStart_toStartOf="@id/company_name_edittext_edit"
             app:layout_constraintTop_toBottomOf="@id/company_name_edittext_edit" />
@@ -88,13 +89,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Название Компании"
+            android:hint="Телефон"
             android:inputType="number"
             android:text="+7 707 353 94 83"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@id/company_mail_edittext_edit"
             app:layout_constraintStart_toStartOf="@id/company_mail_edittext_edit"
             app:layout_constraintTop_toBottomOf="@id/company_mail_edittext_edit"
-            tools:ignore="TextFields"/>
+            tools:ignore="TextFields" />
 
         <Switch
             android:id="@+id/show_number_switch"
@@ -127,6 +129,7 @@
             android:hint="Сайт компании"
             android:inputType="textWebEmailAddress"
             android:text="www.qel.mobi"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@id/company_number_edittext_edit"
             app:layout_constraintStart_toEndOf="@id/links_image"
             app:layout_constraintTop_toBottomOf="@+id/company_number_edittext_edit" />
@@ -137,9 +140,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Сайт компании"
+            android:hint="Ссылка на Instagram"
             android:inputType="textWebEmailAddress"
             android:text="www.instagram.com/"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@id/company_number_edittext_edit"
             app:layout_constraintStart_toStartOf="@+id/link_main_site_edittext"
             app:layout_constraintTop_toBottomOf="@+id/link_main_site_edittext" />
@@ -150,9 +154,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Сайт компании"
+            android:hint="Ссылка на Facebook"
             android:inputType="textWebEmailAddress"
             android:text="www.facebook.com/"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@+id/link_main_site_edittext"
             app:layout_constraintStart_toStartOf="@+id/link_main_site_edittext"
             app:layout_constraintTop_toBottomOf="@+id/link_instagram_edittext" />
@@ -160,17 +165,17 @@
 
         <EditText
             android:id="@+id/link_vk_edittext"
+            style="@style/MyEditTextTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Сайт компании"
+            android:hint="Ссылка на ВКонтакте"
             android:inputType="textWebEmailAddress"
             android:text="www.vk.com/"
-            style="@style/MyEditTextTheme"
-            app:layout_constraintTop_toBottomOf="@id/link_facebook_edittext"
-            app:layout_constraintStart_toStartOf="@id/link_facebook_edittext"
+            android:theme="@style/MyEditTextTheme"
             app:layout_constraintEnd_toEndOf="@id/link_facebook_edittext"
-            />
+            app:layout_constraintStart_toStartOf="@id/link_facebook_edittext"
+            app:layout_constraintTop_toBottomOf="@id/link_facebook_edittext" />
 
 
 

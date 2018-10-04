@@ -6,15 +6,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="spinnerPromt">Место</string>
-    <string name="typeOfEventCalendar">Вид мероприятия</string>
+    <string name="typeOfEventCalendar">Тип мероприятия</string>
     <string name="placeOfEvent">Место</string>
     <string name="ticketsOfEvent">Билеты</string>
     <string name="locationOfEvent">Место встречи</string>
     <string name="cityOfEvent">Выберите город</string>
     <string name="themeOfEvent">Выбрать тему</string>
     <string name="howOftenEvent">Как часто проходит?</string>
-    <string name="dayOfWeek">В какой день(дни) недели</string>
+    <string name="dayOfWeek">Дни недели</string>
     <string name="ok">Выбрать</string>
+    <string-array name="editCompanyArr">
+        <item>Редактировать</item>
+    </string-array>
     <string-array name="dayOfWeekArr">
         <item>Понедельник</item>
         <item>Вторник</item>
