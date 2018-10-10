@@ -28,13 +28,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
-                android:elevation="4dp"
                 android:minHeight="?attr/actionBarSize"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:elevation="4dp"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
             <RelativeLayout
                 android:id="@+id/image_create_event_frag_rel_layout"
@@ -1154,9 +1154,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
                             android:layout_marginTop="16dp"
-                            android:background="@null"
-                            android:fontFamily="@font/roboto"
                             android:text="Публичное"
+                            android:fontFamily="@font/roboto"
+                            android:background="@null"
                             android:textColor="#212121"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

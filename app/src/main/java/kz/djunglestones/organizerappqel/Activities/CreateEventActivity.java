@@ -287,8 +287,12 @@ public class CreateEventActivity extends AppCompatActivity implements
                                 // The 'which' argument contains the index position
                                 // of the selected item
                                 if (which == 0) {
+
                                     event_privacy_choose_spinner_tv.setText("Публичное");
+
                                 } else {
+                                    Intent intent = new Intent(CreateEventActivity.this,ChoosePrivacyActivity.class);
+                                    startActivity(intent);
                                     event_privacy_choose_spinner_tv.setText("Частное");
                                 }
 

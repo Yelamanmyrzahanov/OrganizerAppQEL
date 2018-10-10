@@ -33,7 +33,9 @@
         <activity android:name=".Activities.CreateEventActivity" />
         <activity android:name=".Activities.OrderTicketInfoActivity" />
         <activity android:name=".Activities.CreateTicketsActivity" />
-        <activity android:name=".Activities.FreeTicketActivity"></activity>
+        <activity android:name=".Activities.FreeTicketActivity" />
+        <activity android:name=".Activities.ChoosePrivacyActivity" />
+        <activity android:name=".PaidTicketActivity"></activity>
     </application>
 
 </manifest>

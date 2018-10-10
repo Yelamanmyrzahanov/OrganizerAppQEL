@@ -246,7 +246,7 @@
             android:layout_marginBottom="72dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/check_in_total_tv"
+            app:layout_constraintEnd_toEndOf="@+id/sold_out_tickets_recyclerView"
             app:layout_constraintStart_toStartOf="@+id/check_in_innerCircle_percentage_tv"
             app:layout_constraintTop_toBottomOf="@+id/check_in_progressBar" />
 

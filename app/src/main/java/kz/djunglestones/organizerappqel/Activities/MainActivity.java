@@ -97,7 +97,10 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) objectFrag, "CreateEventFragment").commit();
+            Object finalObjectFrag = objectFrag;
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) finalObjectFrag, "CreateEventFragment").commit();
+            new Handler().postDelayed(() -> drawerLayout.closeDrawer(GravityCompat.START), 150);
             navigationView.setCheckedItem((Integer) fragId);
         }
 
@@ -142,22 +145,18 @@ public class MainActivity extends AppCompatActivity implements
 //                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,new EditCompanyFragment()).commit();
 //                break;
             case R.id.check_in:
-                drawerLayout.closeDrawer(GravityCompat.START);
                 objectFrag = new CheckInFragment();
                 fragId = R.id.check_in;
                 break;
             case R.id.orders:
-                drawerLayout.closeDrawer(GravityCompat.START);
                 objectFrag = new OrdersFragment();
                 fragId = R.id.orders;
                 break;
             case R.id.myEvents:
-                drawerLayout.closeDrawer(GravityCompat.START);
                 objectFrag = new MyEventsFragment();
                 fragId = R.id.myEvents;
                 break;
             case R.id.statistics:
-                drawerLayout.closeDrawer(GravityCompat.START);
                 objectFrag = new StatisticsFragment();
                 fragId = R.id.statistics;
                 break;
@@ -165,8 +164,16 @@ public class MainActivity extends AppCompatActivity implements
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) objectFrag, "CreateEventFragment").commit();
+        Object finalObjectFrag = objectFrag;
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, (android.support.v4.app.Fragment) finalObjectFrag, "CreateEventFragment").commit();
+        new Handler().postDelayed(() -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+        }, 150);
+
         navigationView.setCheckedItem((Integer) fragId);
+
+
 
         return true;
     }

@@ -2,6 +2,7 @@ package kz.djunglestones.organizerappqel.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import kz.djunglestones.organizerappqel.Activities.FreeTicketActivity;
 import kz.djunglestones.organizerappqel.Models.CreateTickets;
 import kz.djunglestones.organizerappqel.R;
 
@@ -36,7 +38,7 @@ public class CreateTicketsActivityAdapter extends RecyclerView.Adapter<CreateTic
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.sold_out_ticket_amount_tv.setText(String.valueOf(createTicketsList.get(position).getSoldOutAmount())+" / "+String.valueOf(createTicketsList.get(position).getTotalTicketAmount())+" Продано");
+        holder.sold_out_ticket_amount_tv.setText(String.valueOf(createTicketsList.get(position).getSoldOutAmount())+" / "+String.valueOf(createTicketsList.get(position).getTotalTicketAmount())+"   Продано");
         holder.ticket_type_tv.setText(createTicketsList.get(position).getTicketType());
         if (createTicketsList.get(position).getPrice()>0){
             holder.ticket_price_tv.setText(String.valueOf(createTicketsList.get(position).getPrice())+" ₸");
@@ -47,7 +49,8 @@ public class CreateTicketsActivityAdapter extends RecyclerView.Adapter<CreateTic
             @Override
             public void onClick(View v) {
                 if (createTicketsList.get(position).getPrice()==0){
-                    Toast.makeText(context,"Free",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, FreeTicketActivity.class);
+                    context.startActivity(intent);
                 }else{
                     Toast.makeText(context,"Ne Free",Toast.LENGTH_SHORT).show();
                 }
@@ -71,4 +74,5 @@ public class CreateTicketsActivityAdapter extends RecyclerView.Adapter<CreateTic
             constraintLayout = itemView.findViewById(R.id.create_tickets_main_constraint);
         }
     }
+
 }

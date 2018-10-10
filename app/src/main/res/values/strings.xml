@@ -118,6 +118,30 @@
         <item>31</item>
     </string-array>
     <string name="repeatingEveryDay"></string>
+    <string name="startOfSales">Начало продаж</string>
+    <string name="endOfSales">Окончание продаж</string>
+    <string name="visibilityChoose">Видимость</string>
+    <string name="chooseTicketType">Создать билет</string>
+    <string-array name="chooseTicketTypeArr">
+        <item>Бесплатный</item>
+        <item>Платный</item>
+        <item>Благотворительность</item>
+    </string-array>
+    <string-array name="visibilityChooseArr">
+        <item>Виден</item>
+        <item>Не виден</item>
+        <item>По расписанию</item>
+    </string-array>
+    <string-array name="endOfSalesArr">
+        <item>До начала мероприятия</item>
+        <item>До конца мероприятия</item>
+        <item>По дате и времени</item>
+    </string-array>
+    <string-array name="startOfSalesArr">
+        <item>Немедленно</item>
+        <item>По дате и времени</item>
+        <item>Когда заканчивается билет...</item>
+    </string-array>
     <string-array name="repeatingEveryDayArr">
         <item>Первый</item>
         <item>Второй</item>
