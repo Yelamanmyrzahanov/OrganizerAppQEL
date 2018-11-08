@@ -89,11 +89,11 @@ public class CreateTicketsActivity extends AppCompatActivity {
                                     intent.putExtra("ticket_type",chooseTicketTypeArr[0]+" билет");
                                     startActivity(intent);
                                 }else if (which==1){
-                                    Intent intent = new Intent(CreateTicketsActivity.this,FreeTicketActivity.class);
+                                    Intent intent = new Intent(CreateTicketsActivity.this,PaidTicketActivity.class);
                                     intent.putExtra("ticket_type",chooseTicketTypeArr[1]+" билет");
                                     startActivity(intent);
                                 }else if(which ==2){
-                                    Intent intent = new Intent(CreateTicketsActivity.this,FreeTicketActivity.class);
+                                    Intent intent = new Intent(CreateTicketsActivity.this,PaidTicketActivity.class);
                                     intent.putExtra("ticket_type",chooseTicketTypeArr[2]);
                                     startActivity(intent);
                                 }

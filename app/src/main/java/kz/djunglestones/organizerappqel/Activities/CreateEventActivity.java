@@ -88,7 +88,7 @@ public class CreateEventActivity extends AppCompatActivity implements
     private ActionBarDrawerToggle toggle;
     private boolean[] weekItemsChecked = {false,false,false,false,false,false,false};
     private boolean[] monthDaysItemsChecked = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
-
+    private RelativeLayout relative_event_promocode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -277,6 +277,14 @@ public class CreateEventActivity extends AppCompatActivity implements
             }
         });
 
+        relative_event_promocode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateEventActivity.this,PromoCodeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         constraint_event_privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,19 +339,14 @@ public class CreateEventActivity extends AppCompatActivity implements
             }
         });
         ImageView imageView4 = findViewById(R.id.imageView4);
-        imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CreateEventActivity.this,CreateTicketsActivity.class);
-                startActivity(intent);
-            }
+        imageView4.setOnClickListener(v -> {
+            Intent intent = new Intent(CreateEventActivity.this,CreateTicketsActivity.class);
+            startActivity(intent);
         });
 
-        event_description_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CreateEventActivity.this, "New activity should be opened", Toast.LENGTH_SHORT).show();
-            }
+        event_description_tv.setOnClickListener(v -> {
+            Intent intent = new Intent(CreateEventActivity.this,EventDescriptionActivity.class);
+            startActivity(intent);
         });
 
         more_options_calendar.setOnClickListener(new View.OnClickListener() {
@@ -699,6 +702,7 @@ public class CreateEventActivity extends AppCompatActivity implements
         occurs_every_button = findViewById(R.id.occurs_every_button);
         repeating_every_day_pick_btn = findViewById(R.id.repeating_every_day_pick_btn);
         repeating_every_week_day_pick_btn = findViewById(R.id.repeating_every_week_day_pick_btn);
+        relative_event_promocode = findViewById(R.id.relative_event_promocode);
     }
 
 //    @Override

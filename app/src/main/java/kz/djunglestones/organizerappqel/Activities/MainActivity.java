@@ -67,11 +67,10 @@ public class MainActivity extends AppCompatActivity implements
         toggle.syncState();
         navigationView = findViewById(R.id.mainNavView);
         navigationView.setNavigationItemSelectedListener(this);
-
         if (savedInstanceState == null) {
             Object objectFrag = new MyEventsFragment();
             Object fragId = R.id.myEvents;
-            if (!(getIntent().getExtras() == null)){
+            if (!(getIntent().getStringExtra("fragment_name") == null)){
                 String frag_name =  getIntent().getStringExtra("fragment_name");
                 switch (frag_name){
 //                    case "EditFragment":
@@ -134,8 +133,8 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Object objectFrag = new MyEventsFragment();
-        Object fragId = R.id.myEvents;
+        Object objectFrag = new CheckInFragment();
+        Object fragId = R.id.check_in;
         switch (item.getItemId()) {
 
 //            case R.id.edit:
@@ -220,5 +219,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
 }

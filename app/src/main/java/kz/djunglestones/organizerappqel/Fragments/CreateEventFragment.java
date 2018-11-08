@@ -42,6 +42,7 @@ import java.util.Locale;
 
 import kz.djunglestones.organizerappqel.Activities.EditCompanyActivity;
 import kz.djunglestones.organizerappqel.Activities.ChooseCompanyActivity;
+import kz.djunglestones.organizerappqel.Activities.PromoCodeActivity;
 import kz.djunglestones.organizerappqel.MyInterface;
 import kz.djunglestones.organizerappqel.R;
 
@@ -79,6 +80,7 @@ public class CreateEventFragment extends Fragment implements MyInterface {
     private List<String> checkedDayList;
     private TextView occurs_every_tv,day_of_the_month_tv,repeating_every_tv,choose_occur_week;
     private Button occurs_every_button,repeating_every_day_pick_btn,repeating_every_week_day_pick_btn;
+    private RelativeLayout relative_event_promocode;
 
     public CreateEventFragment() {
         // Required empty public constructor
@@ -126,7 +128,7 @@ public class CreateEventFragment extends Fragment implements MyInterface {
         occurs_every_button = v.findViewById(R.id.occurs_every_button);
         repeating_every_day_pick_btn = v.findViewById(R.id.repeating_every_day_pick_btn);
         repeating_every_week_day_pick_btn = v.findViewById(R.id.repeating_every_week_day_pick_btn);
-
+        relative_event_promocode = v.findViewById(R.id.relative_event_promocode);
     }
 
 
@@ -322,6 +324,14 @@ public class CreateEventFragment extends Fragment implements MyInterface {
                         });
                 builder.create();
                 builder.show();
+            }
+        });
+
+        relative_event_promocode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),PromoCodeActivity.class);
+                startActivity(intent);
             }
         });
 

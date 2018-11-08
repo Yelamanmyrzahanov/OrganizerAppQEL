@@ -122,6 +122,23 @@
     <string name="endOfSales">Окончание продаж</string>
     <string name="visibilityChoose">Видимость</string>
     <string name="chooseTicketType">Создать билет</string>
+    <string name="feesChoose">Сборы</string>
+    <string name="hint_event_desc">Описание</string>
+    <string name="headingType">Выберите размер</string>
+    <string name="dialog_edit_hint">http(s)://</string>
+    <string name="dialog_title">Вставить ссылку</string>
+    <string-array name="headingTypeArr">
+        <item>Heading 1</item>
+        <item>Heading 2</item>
+        <item>Heading 3</item>
+        <item>Heading 4</item>
+        <item>Heading 5</item>
+        <item>Heading 6</item>
+    </string-array>
+    <string-array name="feesChooseArr">
+        <item>Вариант 1</item>
+        <item>Вариант 2</item>
+    </string-array>
     <string-array name="chooseTicketTypeArr">
         <item>Бесплатный</item>
         <item>Платный</item>

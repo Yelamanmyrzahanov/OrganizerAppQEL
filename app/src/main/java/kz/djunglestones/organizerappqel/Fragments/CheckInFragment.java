@@ -1,8 +1,11 @@
 package kz.djunglestones.organizerappqel.Fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,24 +17,30 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kz.djunglestones.organizerappqel.Activities.QRCodeScannerActivity;
 import kz.djunglestones.organizerappqel.Adapter.CheckInAdapter;
 import kz.djunglestones.organizerappqel.Models.CheckIn;
 import kz.djunglestones.organizerappqel.R;
 import kz.djunglestones.organizerappqel.SwipeController;
 import kz.djunglestones.organizerappqel.SwipeControllerActions;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CheckInFragment extends Fragment {
+public class CheckInFragment extends Fragment{
 
     View view;
     private RecyclerView recyclerView;
     private List<CheckIn> checkInList;
+
+    private static final int REQUEST_CAMERA = 1;
+    private ZXingScannerView zXingScannerView;
 
 
     public CheckInFragment() {
@@ -79,6 +88,18 @@ public class CheckInFragment extends Fragment {
             }
         });
 
+
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.fab_check_in);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),QRCodeScannerActivity.class);
+                startActivityForResult(intent,1);
+//                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -89,10 +110,21 @@ public class CheckInFragment extends Fragment {
         checkInList.add(new CheckIn("Nurzhanova Akerke","Стандарт"));
     }
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.orders_fragment_menu, menu);
+        inflater.inflate(R.menu.check_in_fragment_menu, menu);
         MenuItem searchMenu = menu.findItem(R.id.search);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode ==1 && resultCode == Activity.RESULT_OK){
+            String qrCodeData = data.getStringExtra("qrCodeData");
+            Toast.makeText(getContext(),qrCodeData,Toast.LENGTH_SHORT).show();
+        }
     }
 }

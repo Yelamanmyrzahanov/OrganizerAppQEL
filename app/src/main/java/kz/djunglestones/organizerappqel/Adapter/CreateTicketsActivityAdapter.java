@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import kz.djunglestones.organizerappqel.Activities.FreeTicketActivity;
+import kz.djunglestones.organizerappqel.Activities.PaidTicketActivity;
 import kz.djunglestones.organizerappqel.Models.CreateTickets;
 import kz.djunglestones.organizerappqel.R;
 
@@ -50,9 +51,12 @@ public class CreateTicketsActivityAdapter extends RecyclerView.Adapter<CreateTic
             public void onClick(View v) {
                 if (createTicketsList.get(position).getPrice()==0){
                     Intent intent = new Intent(context, FreeTicketActivity.class);
+                    intent.putExtra("ticket_type",createTicketsList.get(position).getTicketType()+" билет");
                     context.startActivity(intent);
                 }else{
-                    Toast.makeText(context,"Ne Free",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, PaidTicketActivity.class);
+                    intent.putExtra("ticket_type",createTicketsList.get(position).getTicketType()+" билет");
+                    context.startActivity(intent);
                 }
             }
         });

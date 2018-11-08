@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaidTicketActivity"
+    tools:context=".Activities.PaidTicketActivity"
     android:background="@color/white">
 
     <android.support.constraint.ConstraintLayout
@@ -164,12 +164,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Cборы"
             android:fontFamily="@font/roboto"
+            android:text="Cборы"
             android:textColor="#212121"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/ticket_amount_edittext"
-            tools:layout_editor_absoluteX="196dp" />
+            app:layout_constraintStart_toStartOf="@+id/fees_constraint"
+            app:layout_constraintTop_toBottomOf="@+id/ticket_amount_edittext" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/fees_constraint"
@@ -201,7 +201,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/fees_spinner_tv"
                 app:layout_constraintStart_toEndOf="@+id/fees_spinner_tv"
                 app:layout_constraintTop_toTopOf="@+id/fees_spinner_tv"
-                app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+                android:src="@drawable/ic_arrow_drop_down_black_24dp" />
 
             <View
                 android:id="@+id/divider_view2"
@@ -218,15 +218,15 @@
             android:id="@+id/start_sales_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto"
             android:text="Начало продаж"
             android:textColor="#212121"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fees_breakdown_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/ticket_price_total_tv" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/choose_sales_start_constraint"
