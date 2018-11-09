@@ -29,7 +29,7 @@ import kz.djunglestones.organizerappqel.R;
 public class ChoosePromocodeTicketActivity extends AppCompatActivity {
     private List<TicketsForChoosePromocode> ticketsForChoosePromocodeList;
     private ChoosePromocodeRecyclerAdapter choosePromocodeRecyclerAdapter;
-
+    private String ticketsFromIntent[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +54,20 @@ public class ChoosePromocodeTicketActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(ChoosePromocodeTicketActivity.this));
         recyclerView.setAdapter(choosePromocodeRecyclerAdapter);
 
+        Intent intent = getIntent();
+        String ticket = intent.getStringExtra("tickets_name_choosen");
+        ticketsFromIntent = ticket.split(", ");
+
+        if (!ticketsFromIntent[0].equals("empty")){
+            for(TicketsForChoosePromocode promo : ticketsForChoosePromocodeList) {
+                for (String ticketName:ticketsFromIntent){
+                    if (promo.getTicketName().equals(ticketName)){
+                        promo.setChecked(true);
+                    }
+                }
+            }
+        }
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -62,9 +76,17 @@ public class ChoosePromocodeTicketActivity extends AppCompatActivity {
                     ticket.setChecked(checkBox.isChecked());
                 }
                 choosePromocodeRecyclerAdapter.notifyDataSetChanged();
+                invalidateOptionsMenu();
 
             }
         });
+
+
+
+
+
+
+
 
     }
 
@@ -75,6 +97,17 @@ public class ChoosePromocodeTicketActivity extends AppCompatActivity {
         ticketsForChoosePromocodeList.add(new TicketsForChoosePromocode("Normal", false));
         ticketsForChoosePromocodeList.add(new TicketsForChoosePromocode("Luxury2", false));
         ticketsForChoosePromocodeList.add(new TicketsForChoosePromocode("Normal2", true));
+    }
+
+    public void updateMenuItem(){
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.getItem(0).setEnabled(choosePromocodeRecyclerAdapter.getResultTicketsForChoosePromocodeList().size()>0);
+        menu.getItem(0).setVisible(choosePromocodeRecyclerAdapter.getResultTicketsForChoosePromocodeList().size()>0);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

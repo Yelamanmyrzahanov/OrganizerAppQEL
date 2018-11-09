@@ -129,6 +129,7 @@ public class AddPromoCodeActivity extends AppCompatActivity implements DiscountP
         discountPromocodeDialog.show(getSupportFragmentManager(), "discount dialog");
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -173,7 +174,7 @@ public class AddPromoCodeActivity extends AppCompatActivity implements DiscountP
 //            }else
             if (promocode_name.getText().toString().isEmpty()) {
                 Toast toast = Toast.makeText(AddPromoCodeActivity.this, "Введите уникальный промокод", Toast.LENGTH_SHORT);
-                TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                TextView v = (TextView) toast.getView().findViewById(android.R.id.message) ;
                 v.setTextColor(Color.RED);
                 toast.show();
             } else if (discount_type.getText().toString().isEmpty()) {

@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import kz.djunglestones.organizerappqel.Activities.ChooseCompanyActivity;
+import kz.djunglestones.organizerappqel.Activities.ChoosePromocodeTicketActivity;
 import kz.djunglestones.organizerappqel.Fragments.DiscountPromocodeDialog;
 import kz.djunglestones.organizerappqel.Models.TicketsForChoosePromocode;
 import kz.djunglestones.organizerappqel.R;
@@ -27,7 +28,7 @@ public class ChoosePromocodeRecyclerAdapter  extends RecyclerView.Adapter<Choose
     private Context context;
     private List<TicketsForChoosePromocode> ticketsForChoosePromocodeList;
     private List<TicketsForChoosePromocode> resultTicketsForChoosePromocodeList;
-    private String ticketsFromIntent[];
+
     public ChoosePromocodeRecyclerAdapter(Context context, List<TicketsForChoosePromocode> ticketsForChoosePromocodeList) {
         this.context = context;
         this.ticketsForChoosePromocodeList = ticketsForChoosePromocodeList;
@@ -41,9 +42,7 @@ public class ChoosePromocodeRecyclerAdapter  extends RecyclerView.Adapter<Choose
         View v;
         v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_choose_promocode, parent, false);
         resultTicketsForChoosePromocodeList = new ArrayList<>();
-        Intent intent = ((Activity) context).getIntent();
-        String ticket = intent.getStringExtra("tickets_name_choosen");
-        ticketsFromIntent = ticket.split(", ");
+
 //        Log.d("ticketsFromIntent", "onCreateViewHolder: "+ Arrays.toString(ticketsFromIntent));
         return new MyViewHolder(v);
     }
@@ -52,13 +51,7 @@ public class ChoosePromocodeRecyclerAdapter  extends RecyclerView.Adapter<Choose
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         TicketsForChoosePromocode ticket = ticketsForChoosePromocodeList.get(position);
-        if (!ticketsFromIntent[0].equals("empty")){
-            for (String ticketName:ticketsFromIntent){
-                if (ticket.getTicketName().equals(ticketName)){
-                    ticket.setChecked(true);
-                }
-            }
-        }
+
         holder.checkBox.setVisibility(
                 ticket.isFree() ? View.GONE : View.VISIBLE
         );
@@ -67,11 +60,8 @@ public class ChoosePromocodeRecyclerAdapter  extends RecyclerView.Adapter<Choose
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    resultTicketsForChoosePromocodeList.add(ticket);
-                }else {
-                    resultTicketsForChoosePromocodeList.remove(ticket);
-                }
+                    ticket.setChecked(isChecked);
+                    ((Activity)context).invalidateOptionsMenu();
 
             }
         });

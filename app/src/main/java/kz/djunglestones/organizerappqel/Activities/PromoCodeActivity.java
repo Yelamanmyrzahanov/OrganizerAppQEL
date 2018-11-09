@@ -42,7 +42,7 @@ public class PromoCodeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.promo_code_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Check in");
+        getSupportActionBar().setTitle("Промокоды");
 
 
         Window window = getWindow();
@@ -58,6 +58,8 @@ public class PromoCodeActivity extends AppCompatActivity {
 
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

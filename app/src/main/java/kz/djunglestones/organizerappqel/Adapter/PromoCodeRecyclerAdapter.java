@@ -34,8 +34,8 @@ public class PromoCodeRecyclerAdapter extends RecyclerView.Adapter<PromoCodeRecy
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.promocode_name.setText(promoCodeList.get(position).getPromo_code_name());
-        holder.ticket_name.setText(promoCodeList.get(position).getTicket_name());
+        holder.promocode_name.setText(promoCodeList.get(position).getTicket_name());
+        holder.ticket_name.setText(promoCodeList.get(position).getPromo_code_name());
     }
 
     @Override
